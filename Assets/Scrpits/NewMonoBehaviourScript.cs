@@ -3,12 +3,13 @@ using UnityEngine;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
-    float speed = 15f;
-    float Turnspeed = 10f; 
+    public float speed = 15f;
+    private Rigidbody Rd;
+    public float Turnspeed = 10f; 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       
+        Rd = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -17,16 +18,16 @@ public class NewMonoBehaviourScript : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
 
-            transform.Translate(Vector3.forward * Time.deltaTime * speed);
+            Rd.AddForce(Vector3.forward * Time.deltaTime * speed);
             
         }
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Translate(Vector3.left * Time.deltaTime * Turnspeed);
+            transform.Rotate(Vector3.down * Time.deltaTime * Turnspeed);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Translate(Vector3.right * Time.deltaTime * Turnspeed);
+            transform.Rotate(Vector3.up * Time.deltaTime * Turnspeed);
         }
             
 
